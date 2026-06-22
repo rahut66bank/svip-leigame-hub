@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>雷竞技 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f6f8fc;
+            color: #1e293b;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* 深色导航区 – 与头图一体 */
+        .nav-wrap {
+            background: linear-gradient(145deg, #0b1120 0%, #18223a 100%);
+            padding: 0 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: #e9edf8;
+            letter-spacing: 1px;
+        }
+
+        .nav-brand span {
+            color: #69b1ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #b7c3da;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.25rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #e9edf8;
+            border-bottom-color: #69b1ff;
+        }
+
+        /* 深色 hero 头图区 */
+        .hero {
+            background: linear-gradient(135deg, #0d162b 0%, #1c2a47 100%);
+            color: #eef2fa;
+            padding: 4.5rem 1.5rem 3.8rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            color: #bcc9e5;
+            line-height: 1.7;
+        }
+
+        .hero .tag {
+            display: inline-block;
+            margin-top: 1.8rem;
+            padding: 0.35rem 1.1rem;
+            background: rgba(105, 177, 255, 0.16);
+            border: 1px solid rgba(105, 177, 255, 0.30);
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #b6d0fc;
+        }
+
+        /* 浅色正文区 */
+        .content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.8rem 1.5rem 4rem;
+        }
+
+        .intro-block {
+            background: #ffffff;
+            padding: 2rem 2.2rem;
+            border-radius: 18px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+            margin-bottom: 3rem;
+        }
+
+        .intro-block h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #0f1b33;
+            margin-bottom: 1rem;
+            border-left: 4px solid #3f7fcf;
+            padding-left: 1rem;
+        }
+
+        .intro-block p {
+            margin-bottom: 1.2rem;
+        }
+
+        .intro-block a {
+            color: #1f5da8;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #b0caf0;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        .intro-block a:hover {
+            color: #0a3b7a;
+            border-bottom-color: #0a3b7a;
+        }
+
+        /* 三个场景卡片 */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 3rem 0;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.02);
+            border: 1px solid #e9edf4;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+        }
+
+        .scene-card .emoji-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.6rem;
+            display: inline-block;
+        }
+
+        .scene-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #17212e;
+        }
+
+        .scene-card p {
+            color: #445566;
+            font-size: 0.95rem;
+        }
+
+        /* 常见说明（FAQ 摘要） */
+        .faq-section {
+            background: #ffffff;
+            padding: 2rem 2.2rem;
+            border-radius: 18px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+            margin: 2.8rem 0 1.5rem;
+        }
+
+        .faq-section h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #0f1b33;
+            margin-bottom: 1.4rem;
+            border-left: 4px solid #3f7fcf;
+            padding-left: 1rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.4rem;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1c2b44;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .faq-item p {
+            color: #3b4d62;
+            font-size: 0.95rem;
+        }
+
+        .faq-item a {
+            color: #1f5da8;
+            text-decoration: none;
+            border-bottom: 1px solid #becfe9;
+        }
+
+        .faq-item a:hover {
+            border-bottom-color: #1f5da8;
+        }
+
+        /* 强调色链接（内嵌句子） */
+        .inline-em a {
+            color: #1a5cab;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid #aac2e5;
+        }
+
+        .inline-em a:hover {
+            color: #0b3770;
+            border-bottom-color: #0b3770;
+        }
+
+        /* 页脚 */
+        .page-footer {
+            text-align: center;
+            padding: 2rem 1.5rem 2.5rem;
+            color: #5a6f89;
+            font-size: 0.9rem;
+            border-top: 1px solid #d8e0ed;
+            background: #f3f6fc;
+        }
+
+        .page-footer a {
+            color: #2c5e9e;
+            text-decoration: none;
+            border-bottom: 1px solid #bccae0;
+        }
+
+        .page-footer a:hover {
+            border-bottom-color: #1a4680;
+        }
+
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .scene-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-inner {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 0.6rem 0;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                margin-top: 0.3rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .scene-grid {
+                grid-template-columns: 1fr;
+                gap: 1.3rem;
+            }
+
+            .intro-block, .faq-section {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 顶部导航（sticky） -->
+<div class="nav-wrap">
+    <div class="nav-inner">
+        <div class="nav-brand">⚡<span>雷</span>竞技</div>
+        <ul class="nav-links">
+            <li><a href="#intro">介绍</a></li>
+            <li><a href="#scenes">场景</a></li>
+            <li><a href="#faq">说明</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- 深色头图 hero -->
+<section class="hero">
+    <h1>雷竞技 · 站点说明</h1>
+    <p>一份关于平台定位、内容方向与常见疑问的整理<br>信息源自公开资料，力求清晰准确</p>
+    <span class="tag">可信 · 轻量 · 导航</span>
+</section>
+
+<!-- 浅色正文区 -->
+<div class="content">
+
+    <!-- 核心介绍 -->
+    <div class="intro-block" id="intro">
+        <h2>关于站点</h2>
+        <p>
+            <a href="https://svip-leigame.com">雷竞技</a> 是一个以竞技内容为核心的线上平台，主要面向喜爱电子竞技、对战赛事与策略游戏的用户群体。
+            站点本身提供赛事资讯、对战数据以及相关的社区讨论空间。整个平台的信息架构偏向实用导向，没有过多修饰性内容。
+        </p>
+        <p>
+            从可查到的公开信息来看，该网站一直保持较为克制的运营风格，不夸大宣传，也不做诱导性推广。
+            页面内容围绕赛事动态、玩法介绍以及用户经验分享展开，适合希望快速了解竞技圈动态的访客。
+        </p>
+        <p>
+            以下从三个常见的使用场景出发，帮助新访客理解<strong>雷竞技</strong>主要覆盖哪些方面。
+        </p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div id="scenes" class="scene-grid">
+        <div class="scene-card">
+            <div class="emoji-icon">🎮</div>
+            <h3>赛事跟踪</h3>
+            <p>日常更新主流竞技项目的赛程、比分与晋级情况。不渲染情绪，只整理事实，方便用户快速浏览。</p>
+        </div>
+        <div class="scene-card">
+            <div class="emoji-icon">📊</div>
+            <h3>数据阅览</h3>
+            <p>包含战队胜率、选手历史记录及对局统计，所有数据均标注来源，方便查阅核实。</p>
+        </div>
+        <div class="scene-card">
+            <div class="emoji-icon">💬</div>
+            <h3>讨论与分享</h3>
+            <p>设有基础评论区与话题板块，用户可围绕比赛、阵容、版本变化等展开交流，管理尺度适中。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明（FAQ 摘要） -->
+    <div class="faq-section" id="faq">
+        <h2>常见说明</h2>
+
+        <div class="faq-item">
+            <strong>▎ 这个网站主要提供什么？</strong>
+            <p>站点以资讯整合与赛事数据为主，同时也包含部分玩家投稿内容。所有信息均按原样展示，不进行二次加工或引导性解读。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>▎ 内容更新频率如何？</strong>
+            <p>重大赛事期间基本保持每日更新，休赛期则按周整理。具体更新时间会显示在每条内容的标题下方。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>▎ 是否涉及资金或交易类服务？</strong>
+            <p>根据现有公开页面判断，<a href="https://svip-leigame.com">雷竞技</a> 主要定位在信息与社区层面，没有直接的支付或交易模块。如有变动以网站实际展示为准。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>▎ 如何确认信息可靠性？</strong>
+            <p>站内数据多标注了赛事主办方或数据合作方 logo，用户可自行对照官方渠道。讨论区内容由用户生成，平台仅做基础审核。</p>
+        </div>
+
+        <div class="faq-item inline-em">
+            <strong>▎ 更多细节</strong>
+            <p>关于平台更完整的功能与定位，建议直接浏览 <a href="https://svip-leigame.com">雷竞技</a> 各页面，以获得最直接的观感。</p>
+        </div>
+    </div>
+
+    <!-- 一句带链接的平实收束（自然嵌入） -->
+    <p style="margin: 1.2rem 0 0.8rem; color: #2d4059; font-size: 0.98rem; text-align: center;">
+        如果你对竞技内容感兴趣，不妨花几分钟了解 <a href="https://svip-leigame.com" style="color:#1a5cab; border-bottom:1px solid #aec3e3; text-decoration:none;">雷竞技</a> 的现有板块，也许会发现符合自己需求的信息。
+    </p>
+
+</div>
+
+<!-- 页脚 -->
+<footer class="page-footer">
+    <p>本页面为独立介绍页 · 内容基于公开信息整理 · 仅供参考</p>
+    <p style="margin-top:0.4rem;">了解更多 → <a href="https://svip-leigame.com">雷竞技</a></p>
+</footer>
+
+</body>
+</html>
